@@ -1,0 +1,24 @@
+server:
+  port: 9090
+spring:
+  application.name: client
+  security:
+    oauth2:
+      client:
+        registration:
+          test-client-oidc:
+            client-id: oidc-client
+            client-secret: $2a$10$IOCzcN10b4Tpu31ocp.y1e/MneF9NKv79r9X.4fd8TUpHamYwcg/q
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid
+            clientName: test-client-oidc
+            provider: custom
+        provider:
+          custom:
+            issuer-uri: http://localhost:8080
+logging:
+  level:
+    org:
+      springframework:
+        security: trace
